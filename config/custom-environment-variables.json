@@ -1,0 +1,8 @@
+{
+  "port": "PORT",
+  "mailer": {
+    "pass": "EMAIL_PASS",
+    "provider": "EMAIL_PROVIDER",
+    "user": "EMAIL_USER"
+  }
+}

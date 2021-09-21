@@ -55,10 +55,16 @@
     "prettier": "^2.4.1"
   },
   "dependencies": {
+    "config": "^3.3.6",
+    "handlebars": "^4.7.7",
+    "juice": "^8.0.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^6.1.0",
+    "koa-router": "^10.1.1",
+    "maildev": "^1.1.0",
     "next": "^11.1.2",
+    "nodemailer": "^6.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
