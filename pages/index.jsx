@@ -1,7 +1,8 @@
 import React from 'react';
+import Text from '../components/Text';
 
 export default function Index() {
   return (
-    <p>This is a sample page</p>
+    <Text>This is a sample page</Text>
   );
 }
