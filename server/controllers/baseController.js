@@ -1,17 +1,26 @@
 import Joi, { ValidationError } from 'joi';
-import { hashSync } from 'bcrypt';
+import { compareSync, hashSync } from 'bcrypt';
 import Prisma from '../lib/prisma';
 
-const userSchema = Joi.object({
-  username: Joi.string().alphanum().min(2).max(15)
-    .required(),
-  email: Joi.string().email().required(),
-  name: Joi.string().max(35).required(),
-  password: Joi.string().min(14).max(30).required(),
-});
+function getUserSchema(isLogin = false) {
+  if (isLogin) {
+    return Joi.object({
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    });
+  }
+  return Joi.object({
+    username: Joi.string().alphanum().min(2).max(15)
+      .required(),
+    email: Joi.string().email().required(),
+    name: Joi.string().max(35).required(),
+    password: Joi.string().min(14).max(30).required(),
+  });
+}
 
 export async function registerUser(payload) {
   try {
+    const userSchema = getUserSchema();
     const {
       username, email, name, password,
     } = await userSchema.validateAsync(
@@ -58,6 +67,40 @@ export async function registerUser(payload) {
   }
 }
 
-export async function loginUser() {
-  return {};
+export async function loginUser(payload) {
+  try {
+    const userSchema = getUserSchema(true);
+    const { email, password } = await userSchema.validateAsync(payload);
+    const user = await Prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (user) {
+      const passwordIsValid = compareSync(password, user.hash);
+      if (passwordIsValid) {
+        return {
+          status: true,
+          data: {
+            email,
+            name: user.name,
+            username: user.username,
+          },
+        };
+      }
+      return {
+        status: false,
+        message: 'Invalid email or password',
+      };
+    }
+    return {
+      status: false,
+      message: 'This email does not exist in our records',
+    };
+  } catch (e) {
+    if (e instanceof ValidationError) {
+      const [error] = e.details;
+      return { status: false, message: error.message };
+    }
+    throw e;
+  }
 }
