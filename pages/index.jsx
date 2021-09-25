@@ -1,7 +1,8 @@
-import React from 'react';
 import { Box } from '@chakra-ui/react';
+import React from 'react';
 import Header from '../components/LandingPage/Header';
 import Hero from '../components/LandingPage/Hero';
+import HowItWorks from '../components/LandingPage/HowItWorks';
 import Products from '../components/LandingPage/Products';
 
 export default function Index() {
@@ -10,6 +11,7 @@ export default function Index() {
       <Header />
       <Hero />
       <Products />
+      <HowItWorks />
     </Box>
   );
 }

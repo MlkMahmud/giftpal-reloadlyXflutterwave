@@ -1,8 +1,8 @@
-import React from 'react';
 import {
   Icon, Stack, Text,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useMediaQuery } from '../../utils';
 import { AirtimeIcon, BillIcon, GiftCardIcon } from '../icons';
 
@@ -30,7 +30,7 @@ ProductCard.propTypes = {
 };
 
 export default function Products() {
-  const isMobile = useMediaQuery('(max-width: 700px)');
+  const isMobile = useMediaQuery('(max-width: 800px)');
   return (
     <Stack color="white" spacing={10} px={['2', '10']} py={['5']}>
       <Text
@@ -41,7 +41,7 @@ export default function Products() {
         our products
       </Text>
       <Stack
-        align="center"
+        align={isMobile ? 'center' : ''}
         isInline={!isMobile}
         justifyContent="space-between"
         spacing="5"
