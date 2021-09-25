@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 
 export default function Header() {
   return (
-    <Flex align="end" justify="space-between" p={['2', '3']}>
+    <Flex align="end" as="header" justify="space-between" px={['2', '10']} py="5">
       <a href="/" aria-label="homepage">
         <svg
           width="101"
