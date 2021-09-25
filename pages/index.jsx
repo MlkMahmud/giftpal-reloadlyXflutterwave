@@ -1,8 +1,8 @@
 import React from 'react';
-import Text from '../components/Text';
+import Header from '../components/Header';
 
 export default function Index() {
   return (
-    <Text>This is a sample page</Text>
+    <Header />
   );
 }
