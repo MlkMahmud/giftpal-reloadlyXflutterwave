@@ -1,5 +1,6 @@
 {
   "port": "PORT",
+  "jwtSecret": "JWT_SECRET",
   "mailer": {
     "pass": "EMAIL_PASS",
     "provider": "EMAIL_PROVIDER",

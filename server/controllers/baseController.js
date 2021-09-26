@@ -1,5 +1,7 @@
+import config from 'config';
 import Joi, { ValidationError } from 'joi';
 import { compareSync, hashSync } from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import Prisma from '../lib/prisma';
 
 function getUserSchema(isLogin = false) {
@@ -41,7 +43,7 @@ export async function registerUser(payload) {
       return data;
     }
     const hash = hashSync(password, 10);
-    const user = await Prisma.user.create({
+    const { id } = await Prisma.user.create({
       data: {
         username,
         name,
@@ -49,14 +51,15 @@ export async function registerUser(payload) {
         hash,
       },
       select: {
-        email: true,
-        name: true,
-        username: true,
+        id: true,
       },
+    });
+    const token = jwt.sign({ id }, config.get('jwtSecret'), {
+      expiresIn: '24h',
     });
     return {
       status: true,
-      data: user,
+      token,
     };
   } catch (e) {
     if (e instanceof ValidationError) {
@@ -78,13 +81,12 @@ export async function loginUser(payload) {
     if (user) {
       const passwordIsValid = compareSync(password, user.hash);
       if (passwordIsValid) {
+        const token = jwt.sign({ id: user.id }, config.get('jwtSecret'), {
+          expiresIn: '24h',
+        });
         return {
           status: true,
-          data: {
-            email,
-            name: user.name,
-            username: user.username,
-          },
+          token,
         };
       }
       return {

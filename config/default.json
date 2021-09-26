@@ -1,5 +1,6 @@
 {
   "port": 4000,
+  "jwtSecret": "thisisasecretshh",
   "reloadly": {
     "giftcards": "https://giftcards-sandbox.reloadly.com",
     "topups": "https://topups-sandbox.reloadly.com"

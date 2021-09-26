@@ -63,10 +63,10 @@ export default function LoginForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values),
           });
-          const { message } = await response.json();
           if (response.ok) {
             router.push('/dashboard');
-          } else if (message) {
+          } else if (response.status < 500) {
+            const { message } = await response.json();
             setIsLoading(false);
             displayToast(message);
           } else {
@@ -125,7 +125,7 @@ export default function LoginForm() {
                 {({ field, meta }) => (
                   <FormControl isInvalid={meta.error && meta.touched} isRequired>
                     <FormLabel htmlFor="password">Password:</FormLabel>
-                    <Input id="password" type="password" {...field} />
+                    <Input autoComplete="new-password" id="password" type="password" {...field} />
                     <FormErrorMessage>{meta.error}</FormErrorMessage>
                   </FormControl>
                 )}
