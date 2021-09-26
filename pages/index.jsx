@@ -1,7 +1,13 @@
 import React from 'react';
+import Layout from '../components/Layout';
+import Home from './Home';
+
+
 
 export default function Index() {
   return (
-    <p>This is a sample page</p>
+    <Layout>
+      <Home />
+    </Layout>
   );
 }
