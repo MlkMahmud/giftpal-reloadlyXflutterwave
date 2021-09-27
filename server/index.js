@@ -1,10 +1,12 @@
+import config from 'config';
 import next from 'next';
 import path from 'path';
+import MailDev from 'maildev';
 import app from './app';
 
-const PORT = process.env.PORT || 4000;
-const dev = process.env.NODE_ENV === 'development';
-const server = next({ dev, dir: path.join(__dirname, '..') });
+const PORT = config.get('port');
+const dev = process.env.NODE_ENV !== 'production';
+const server = next({ dev, dir: path.dirname(__dirname) });
 const handle = server.getRequestHandler();
 
 (async function main() {
@@ -20,6 +22,9 @@ const handle = server.getRequestHandler();
         console.log(
           `> Ready on localhost:${PORT} - env ${process.env.NODE_ENV}`,
         );
+        if (dev) {
+          new MailDev().listen();
+        }
       });
   } catch (e) {
     console.error(e);
