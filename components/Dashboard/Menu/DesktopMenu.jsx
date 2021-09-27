@@ -9,8 +9,10 @@ export default function DesktopMenu({ setActiveItem }) {
     <Stack
       bgColor="#5A12A3"
       color="#fff"
-      minHeight="100vh"
-      pos="relative"
+      height="100vh"
+      pos="fixed"
+      top="0"
+      width="200px"
       px={['2', '10']}
       py="5"
       spacing="12"

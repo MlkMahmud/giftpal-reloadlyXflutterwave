@@ -4,14 +4,13 @@ import {
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { AiFillHome, AiFillSetting, AiOutlineTransaction } from 'react-icons/ai';
+import { AiFillHome, AiFillSetting } from 'react-icons/ai';
 import { MdCardGiftcard } from 'react-icons/md';
 
 const menuItems = [
-  { title: 'Dashboard', icon: AiFillHome },
-  { title: 'Giftcards', icon: MdCardGiftcard },
-  { title: 'Transactions', icon: AiOutlineTransaction },
-  { title: 'Settings', icon: AiFillSetting },
+  { title: 'home', icon: AiFillHome },
+  { title: 'giftcards', icon: MdCardGiftcard },
+  { title: 'settings', icon: AiFillSetting },
 ];
 
 export function MenuItem({
@@ -30,7 +29,7 @@ export function MenuItem({
     >
       <Stack align="center" isInline spacing="2">
         <Icon as={icon} boxSize="25px" />
-        <Text fontSize="20px">{title}</Text>
+        <Text textTransform="capitalize" fontSize="20px">{title}</Text>
       </Stack>
     </Button>
   );

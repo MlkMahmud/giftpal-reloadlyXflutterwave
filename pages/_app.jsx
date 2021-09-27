@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/global.css';
+import theme from '../theme';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -11,7 +12,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>GiftPal</title>
       </Head>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </>
