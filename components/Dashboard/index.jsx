@@ -7,11 +7,6 @@ import Header from './Header';
 import DesktopMenu from './Menu/DesktopMenu';
 import MobileMenu from './Menu/MobileMenu';
 
-const user = {
-  name: 'Malik Mahmud',
-  username: 'mlkmahmud',
-};
-
 export default function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [_, setActiveItem] = useState('Dashboard');
@@ -21,14 +16,11 @@ export default function Dashboard() {
     return (
       <Box>
         <Header
-          isMobile={isMobile}
           handleClick={onOpen}
-          user={user}
         />
         <MobileMenu
           isOpen={isOpen}
           handleClose={onClose}
-          user={user}
           setActiveItem={(item) => setActiveItem(item)}
         />
       </Box>
@@ -38,13 +30,7 @@ export default function Dashboard() {
   return (
     <Grid templateColumns="minmax(200px, 220px) 1fr">
       <DesktopMenu setActiveItem={(item) => setActiveItem(item)} />
-      <Box>
-        <Header
-          isMobile={isMobile}
-          handleClick={onOpen}
-          user={user}
-        />
-      </Box>
+      <Box />
     </Grid>
   );
 }

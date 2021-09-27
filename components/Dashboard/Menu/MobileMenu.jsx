@@ -10,14 +10,12 @@ import {
 import PropTypes from 'prop-types';
 import React from 'react';
 import MenuList from './MenuList';
-import User from '../User';
 import LogoutButton from '../LogoutButton';
 
 export default function MobileMenu({
   isOpen,
   handleClose,
   setActiveItem,
-  user,
 }) {
   const handleClick = (item) => {
     setActiveItem(item);
@@ -33,7 +31,7 @@ export default function MobileMenu({
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader />
+        <DrawerHeader mb="20px" />
         <DrawerBody>
           <Stack
             align="start"
@@ -42,7 +40,6 @@ export default function MobileMenu({
             pos="relative"
             height="100%"
           >
-            <User name={user.name} username={user.username} />
             <MenuList setActiveItem={(item) => handleClick(item)} />
             <LogoutButton />
           </Stack>
@@ -55,6 +52,5 @@ export default function MobileMenu({
 MobileMenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  user: PropTypes.shape().isRequired,
   setActiveItem: PropTypes.func.isRequired,
 };
