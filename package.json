@@ -4,6 +4,7 @@
   "description": "ReloadlyXFlutterwave Hackathon Project",
   "main": "index.js",
   "lint-staged": {
+    "**/*.js": "eslint --fix",
     "**/*.{md,yml,json}": "prettier --write",
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
