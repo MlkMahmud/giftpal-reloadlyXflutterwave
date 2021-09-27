@@ -19,7 +19,7 @@ export default function Category({
       borderRadius="0.8rem"
       shadow="0 4px 8px 0 rgb(131 137 160 / 20%)"
     >
-      <Text>{title}</Text>
+      <Text fontSize="18px" fontWeight="extrabold">{title}</Text>
       <Text>{description}</Text>
       <Button
         colorScheme="black"

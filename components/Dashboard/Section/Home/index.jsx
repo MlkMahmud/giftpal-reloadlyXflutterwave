@@ -29,6 +29,7 @@ export default function Home() {
         overflowY="auto"
         spacing="5"
         padding="20px 10px 20px 5px"
+        mb="20px"
       >
         {categories.map(({ buttonText, description, title }) => (
 
