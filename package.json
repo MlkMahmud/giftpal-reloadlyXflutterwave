@@ -4,6 +4,7 @@
   "description": "ReloadlyXFlutterwave Hackathon Project",
   "main": "index.js",
   "lint-staged": {
+    "**/*.{js,jsx}": "eslint --fix",
     "**/*.{md,yml,json}": "prettier --write",
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
@@ -14,7 +15,6 @@
     "build:server": "babel server --out-dir dist",
     "dev": "cross-env NODE_ENV=development nodemon",
     "prepare": "husky install",
-    "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/index"
   },
   "engines": {
@@ -38,6 +38,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
@@ -51,14 +52,37 @@
     "lint-staged": "^11.1.2",
     "nodemon": "^2.0.12",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "prisma": "^3.1.1"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@prisma/client": "^3.1.1",
+    "@sentry/node": "^6.13.2",
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "cross-fetch": "^3.1.4",
+    "flutterwave-node-v3": "^1.0.8",
+    "formik": "^2.2.9",
+    "framer-motion": "^4.1.17",
+    "handlebars": "^4.7.7",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "juice": "^8.0.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-helmet": "^6.1.0",
+    "koa-router": "^10.1.1",
+    "maildev": "^1.1.0",
     "next": "^11.1.2",
+    "nodemailer": "^6.6.3",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "yup": "^0.32.9"
   }
 }

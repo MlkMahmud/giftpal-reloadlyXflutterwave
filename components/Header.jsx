@@ -10,7 +10,8 @@ const styles = {
         display: "flex",
         paddingLeft: 20,
         paddingTop: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        background: "#5A12A3"
     },
     nav: {
         display: "flex",
@@ -23,7 +24,8 @@ const styles = {
         alignItems: "center",
         justifyContent: "space-around",
         flex: 0.4,
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 20
     },
     anchor: {
         textDecoration: "none",
@@ -60,7 +62,7 @@ export default function Header() {
                 <Link href="/about">
                     <a style={styles.anchor}>About us</a>
                 </Link>
-                <Link href="/signin">
+                <Link href="/login">
                     <a style={styles.anchor}>Sign in</a>
                 </Link>
                 <div style={styles.icon}>

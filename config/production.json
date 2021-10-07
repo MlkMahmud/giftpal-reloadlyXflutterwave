@@ -1,0 +1,9 @@
+{
+  "reloadly": {
+    "giftcards": "https://giftcards.reloadly.com",
+    "topups": "https://topups.reloadly.com"
+  },
+  "sentry": {
+    "enabled": true
+  }
+}
